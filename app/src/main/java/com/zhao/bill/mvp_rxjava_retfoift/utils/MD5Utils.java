@@ -1,4 +1,4 @@
-package com.zhao.bill.mvp_rxjava_retfoift;
+package com.zhao.bill.mvp_rxjava_retfoift.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 /**
  * md5加密工具类
  *
- * @author zhangmeng
  */
 public class MD5Utils {
 

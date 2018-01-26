@@ -1,10 +1,10 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.client;
 
 import com.zhao.bill.mvp_rxjava_retfoift.BuildConfig;
-import com.zhao.bill.mvp_rxjava_retfoift.MD5Utils;
-import com.zhao.bill.mvp_rxjava_retfoift.MedBanksApplication;
-import com.zhao.bill.mvp_rxjava_retfoift.SHA1Util;
-import com.zhao.bill.mvp_rxjava_retfoift.Tool;
+import com.zhao.bill.mvp_rxjava_retfoift.MyApplication;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.MD5Utils;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.SHA1Util;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.Tool;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class okHttp {
 
-    private static MedBanksApplication app;
+    private static MyApplication app;
     private static OkHttpClient okHttpClient = null;
 
     private HttpLoggingInterceptor loggingInterceptor;// Log信息拦截器
@@ -51,7 +51,7 @@ public class okHttp {
 
         if (okHttpClient == null) {
             new okHttp();
-            app = MedBanksApplication.getsInstance();
+            app = MyApplication.getsInstance();
 
             return okHttpClient;
         }
@@ -132,14 +132,14 @@ public class okHttp {
     /**
      * 缓存机制
      */
-    private File cacheFile = new File(MedBanksApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
+    private File cacheFile = new File(MyApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
     private Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
 
     private Interceptor cacheInterceptor = chain -> {
         Request request = chain.request();
 
         // 无网络
-        if (!Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
+        if (!Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
@@ -148,7 +148,7 @@ public class okHttp {
         Response response = chain.proceed(request);
 
         // 有网络
-        if (Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
+        if (Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
             int maxAge = 0;
             // 有网络时 设置缓存超时时间0个小时
             response.newBuilder()
@@ -227,14 +227,14 @@ public class okHttp {
             parameters.put(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getsInstance().getLogin_Token());
         }
 
-        if (!TextUtils.isEmpty(MedBanksApplication.getsInstance().getCaseDbName())) {//如果本地有了dbname才添加这个字段
-            parameters.put(Keys.DB_NAME, MedBanksApplication.getsInstance().getCaseDbName());
+        if (!TextUtils.isEmpty(MyApplication.getsInstance().getCaseDbName())) {//如果本地有了dbname才添加这个字段
+            parameters.put(Keys.DB_NAME, MyApplication.getsInstance().getCaseDbName());
         }
 
         parameters.put(Keys.APP_ID, "android");
-        parameters.put(Keys.APP_VERSION, MedBanksApplication.getsInstance().getVersion());
-        parameters.put(Keys.DEVICE_TOKEN, MedBanksApplication.getsInstance().getDeviceId());
-        parameters.put(Keys.DEVICE_UUID, MedBanksApplication.getsInstance().getDeviceId());
+        parameters.put(Keys.APP_VERSION, MyApplication.getsInstance().getVersion());
+        parameters.put(Keys.DEVICE_TOKEN, MyApplication.getsInstance().getDeviceId());
+        parameters.put(Keys.DEVICE_UUID, MyApplication.getsInstance().getDeviceId());
         parameters.put(Keys.SIGN_TIME, System.currentTimeMillis() + "");*/
 
         return parameters;

@@ -1,6 +1,6 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.request;
 
-import com.zhao.bill.mvp_rxjava_retfoift.ChooseDbBean;
+import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.base.BaseEntityList;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.zhao.bill.mvp_rxjava_retfoift.mvp.contract;
 
-import com.zhao.bill.mvp_rxjava_retfoift.ChooseDbBean;
+import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.base.BasePresenter;
 import com.zhao.bill.mvp_rxjava_retfoift.base.BaseView;
 

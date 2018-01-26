@@ -1,7 +1,7 @@
-package com.zhao.bill.mvp_rxjava_retfoift;
+package com.zhao.bill.mvp_rxjava_retfoift.bean;
 
 /**
- * Created by David on 16/3/23.
+ * Created by Bill on 16/3/23.
  */
 public class PatientDbData {
 

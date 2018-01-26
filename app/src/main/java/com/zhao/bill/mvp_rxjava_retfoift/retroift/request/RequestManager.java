@@ -1,5 +1,6 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.request;
 
+import com.zhao.bill.mvp_rxjava_retfoift.BuildConfig;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.client.Retrofit2Client;
 
 import io.reactivex.Observable;
@@ -14,12 +15,8 @@ import io.reactivex.schedulers.Schedulers;
 public class RequestManager {
 
     // 网络环境
-    //   public static final String BASE_URL = "http://test.4sapp.medbanks.cn";// 测试库
-    public static final String BASE_URL = "https://4s-api.medbanks.cn";// 正式库
-
-   /* public static final boolean TEST = BuildConfig.DEBUG;
-    public static final String BASE_URL = TEST ? "http://test.4sapp.medbanks.cn" : "https://4s-api.medbanks.cn";
-*/
+    public static final boolean TEST = BuildConfig.DEBUG;
+    public static final String BASE_URL = TEST ? "http://test.cn" : "https://api.cn";
 
     private static RequestApi requestApi = null;
 

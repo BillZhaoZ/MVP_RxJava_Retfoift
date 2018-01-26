@@ -24,7 +24,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.zhao.bill.mvp_rxjava_retfoift.R;
-import com.zhao.bill.mvp_rxjava_retfoift.mvp.CustomProgressDialog;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.CustomProgressDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

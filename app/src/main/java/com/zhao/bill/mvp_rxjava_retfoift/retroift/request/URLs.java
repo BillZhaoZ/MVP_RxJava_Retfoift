@@ -8,8 +8,4 @@ public class URLs {
 
     public static final String DB_LIST = "/wxpatients/dblist";
 
-    public static final String NONE_RELATE = "/wxpatients/lists";
-
-    public static final String HAS_CASE = "/wxpatients/casematch";
-
 }

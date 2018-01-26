@@ -1,4 +1,4 @@
-package com.zhao.bill.mvp_rxjava_retfoift;
+package com.zhao.bill.mvp_rxjava_retfoift.bean;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import java.util.List;
  * 选择病例库
  * Created by Bill on 2018/1/22.
  */
-
 public class ChooseDbBean {
 
     /**

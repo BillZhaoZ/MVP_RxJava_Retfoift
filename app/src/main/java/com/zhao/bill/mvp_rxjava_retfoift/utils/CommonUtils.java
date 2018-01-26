@@ -1,4 +1,4 @@
-package com.zhao.bill.mvp_rxjava_retfoift;
+package com.zhao.bill.mvp_rxjava_retfoift.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.zhao.bill.mvp_rxjava_retfoift.R;
 
 import java.util.HashMap;
 import java.util.List;

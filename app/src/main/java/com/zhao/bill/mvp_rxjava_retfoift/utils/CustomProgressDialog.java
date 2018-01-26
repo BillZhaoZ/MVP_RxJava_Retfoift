@@ -1,4 +1,4 @@
-package com.zhao.bill.mvp_rxjava_retfoift.mvp;
+package com.zhao.bill.mvp_rxjava_retfoift.utils;
 
 import android.app.Dialog;
 import android.content.Context;

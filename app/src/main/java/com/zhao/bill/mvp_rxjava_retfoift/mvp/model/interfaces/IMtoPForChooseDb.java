@@ -1,7 +1,7 @@
 package com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces;
 
 
-import com.zhao.bill.mvp_rxjava_retfoift.ChooseDbBean;
+import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 
 import java.util.List;
 

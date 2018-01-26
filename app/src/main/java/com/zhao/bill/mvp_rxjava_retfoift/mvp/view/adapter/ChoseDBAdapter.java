@@ -5,7 +5,7 @@ import android.widget.CheckBox;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.zhao.bill.mvp_rxjava_retfoift.ChooseDbBean;
+import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.R;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.OnItemSelectedListener;
 

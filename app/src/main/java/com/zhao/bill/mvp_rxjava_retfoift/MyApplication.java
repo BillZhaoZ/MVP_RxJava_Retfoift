@@ -7,9 +7,9 @@ import android.support.multidex.MultiDexApplication;
  * 在清单文件中指定让系统创建我们的类
  * Created by David on 16/3/1.
  **/
-public class MedBanksApplication extends MultiDexApplication {
+public class MyApplication extends MultiDexApplication {
 
-    private static MedBanksApplication sInstance;
+    private static MyApplication sInstance;
 
     @Override
     public void onCreate() {
@@ -28,7 +28,7 @@ public class MedBanksApplication extends MultiDexApplication {
      *
      * @return
      */
-    public static MedBanksApplication getsInstance() {
+    public static MyApplication getsInstance() {
         return sInstance;
     }
 

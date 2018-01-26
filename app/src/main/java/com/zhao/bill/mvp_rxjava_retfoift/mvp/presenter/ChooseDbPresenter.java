@@ -2,13 +2,12 @@ package com.zhao.bill.mvp_rxjava_retfoift.mvp.presenter;
 
 import android.content.Context;
 
-import com.zhao.bill.mvp_rxjava_retfoift.ChooseDbBean;
+import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.contract.ChooseDbContract;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.impl.ChooseDbModel;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPForChooseDb;
 
 import java.util.List;
-
 
 /**
  * p层   数据处理层，所有的数据逻辑，业务逻辑都在这里处理；责完成View于Model间的交互

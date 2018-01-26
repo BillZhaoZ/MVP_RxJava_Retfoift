@@ -1,10 +1,10 @@
-package com.zhao.bill.mvp_rxjava_retfoift;
+package com.zhao.bill.mvp_rxjava_retfoift.utils;
 
 import java.security.MessageDigest;
 
 /**
  * sha1 加密工具类
- * Created by zhangmeng on 2017/3/16.
+ * Created by Bill on 2017/3/16.
  */
 public class SHA1Util {
 
