@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_title_bg">#169f56</color>
+    <color name="color_line_bg">#d9d9d9</color>
+    <color name="color_line_spinner_bg">#e3e3e3</color>
+
+    <color name="color_qianhui">#afb3af</color>
+    <color name="color_normal">#FFFFFF</color>
+    <color name="color_press">#33BABABA</color>
+    <color name="color_not_filled">#cccdcd</color>
+
+    <!--  font -->
+    <color name="font_color_btn_gray">#797979</color>
+    <color name="font_color_remind">#4b4c4b</color>
+    <color name="color_4b4d4b">#4b4d4b</color>
+    <color name="font_color_item_title">#515151</color>
+    <color name="font_color_item_second">#838383</color>
+    <color name="font_color_item_gray">#BABABA</color>
+    <color name="font_color_item_green">#7CCFA2</color>
+    <color name="font_color_item_green_light">#86C6A3</color>
+    <color name="font_color_search_btn">#ACACAC</color>
+    <color name="font_color_gray_light">#979797</color>
+    <color name="font_color_title_gray">#BCBCBC</color>
+    <color name="font_color_case_db">#4c4c4c</color>
+
+    <color name="info_value">#767676</color>
+    <color name="color_d0d0d0">#d0d0d0</color>
+    <color name="color_353535">#353535</color>
+    <color name="add_report_hint">#bcbcbc</color>
+
+
+    <color name="font_color_ts_light">#CECECE</color>
+    <color name="font_color_ts_gray">#B3B3B3</color>
+
+    <color name="tab_top_text_normal">#515151</color>
+    <color name="tab_top_text_focus">#7CCFA2</color>
+
+    <color name="color_login_hint_text">#c1c1c1</color>
+
+    <color name="color_chat_text_n">#A3A3A3</color>
+    <color name="color_chat_input">#838383</color>
+
+    <color name="color_gray">#ECECEC</color>
+    <color name="color_gray_form">#727373</color>
+
+    <!--  标签 -->
+    <color name="font_color_label">#A8A8A8</color>
+    <color name="color_label_bg">#F0F0F0</color>
+
+    <!--  病例库分组 -->
+    <color name="color_item_gray_bg">#F0F0F0</color>
+
+    <!--  搜索 -->
+    <color name="color_search_bg">#F3F3F3</color>
+
+    <!-- 统一风格背景 -->
+    <color name="color_bg">#F0F0F0</color>
+    <color name="color_tab_bg">#3FA469</color>
+
+    <!--字体颜色 -->
+    <color name="color_white">#ffffff</color>
+    <color name="color_blue">#4169e1</color>
+    <color name="color_black">#000000</color>
+
+    <color name="color_gray_dark">#ADADAD</color>
+    <color name="color_gray_dark_light">#C8C8C8</color>
+    <color name="color_font_green">#3FA469</color>4CAF7A
+    <color name="color_font_greenRecord">#4CAF7A</color>
+    <color name="color_font_dark">#484137</color>
+
+    <color name="color_text_darkGray">#4b4c4b</color>
+    <color name="color_text_middleGray">#7e807e</color>
+    <color name="color_text_lightGray">#afb3af</color>
+
+    <!-- 基本信息-->
+    <color name="color_basic_bg">#edf5eb</color>
+    <color name="color_basic_line_bg">#d5d5d5</color>
+
+    <color name="color_event_color">#797979</color>
+    <color name="color_date_color">#515151</color>
+
+    <color name="color_name_color">#515151</color>
+    <color name="color_777777">#777777</color>
+    <color name="color_ff5025">#ff5025</color>
+
+    <!-- 病例库 TabHost-->
+    <color name="color_tab_color_f">#7ccfa2</color>
+    <color name="color_tab_color_n">#989797</color>
+    <color name="transparency">#00000000</color>
+    <color name="common_item_pressed_color">#e5e5e5</color>
+    <color name="case_green">#6BBC90</color>
+    <color name="case_hint">#f8f1f2</color>
+    <color name="case_green_not_chose">#98CAAA</color>
+    <color name="case_green_spinner">#4caf7a</color>
+    <color name="case_spinner_choose">#dbe5de</color>
+
+    <color name="patient_info_gridview">#56B07F</color>
+    <color name="collect_color">#828382</color>
+    <color name="color_fafafa">#fafafa</color>
+    <color name="color_0e6637">#0e6637</color>
+
+
+    // tabview相关颜色
+    <color name="group_item_bg">#F7FAF8</color>
+    <color name="group_item_pressed_bg">#E5E5E5</color>
+    <color name="child_item_diveder">#D6D6D5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="tab_time_text_color">#6BBC90</color>
+
+    <color name="transparent_gray">#7Fcccccc</color>
+    <color name="transparent_g">#ECECEF</color>
+
+    <color name="color_cccccc">#cccccc</color>
+
+    <color name="text_title">#ff5f5f5f</color>
+    <color name="dialog_divider">#ffe8e0da</color>
+    <color name="dialog_btn_normal">#ffffff</color>
+    <color name="dialog_background">#ffffff</color>
+    <color name="dialog_btn_press">#ffece5df</color>
+    <color name="text_desc">#ffbebbb4</color>
+    <color name="text_content">#ffa19d94</color>
+    <color name="gray">#808080</color> <!-- 灰色 -->
+    <color name="name_list_record">#4d4d4d</color>
+
+    <!--图片上传-->
+    <color name="image_uploading_text">#F4D100</color>
+    <color name="image_uploading_bg">#fef0c2</color>
+
+    <color name="image_sucess_text">#30CE73</color>
+    <color name="image_sucess_bg">#C7ECD8</color>
+
+    <color name="image_recording_bg">#CCF5F2</color>
+    <color name="image_recording_text">#36DFDD</color>
+
+    <color name="image_fail_text">#FF8E8E</color>
+    <color name="image_fail_case_text">#FE6666</color>
+    <color name="image_fail_bg">#F3D7D3</color>
+
+    <color name="image_finish_text">#4ECF8A</color>
+    <color name="text_color_7d807d">#7d807d</color>
+    <color name="text_color_7d807e">#7d807e</color>
+    <color name="text_color_ffebbc">#ffebbc</color>
+    <color name="text_color_ff9601">#ff9601</color>
+
+
+    <!--首页  图标-->
+    <color name="case_add">#979797</color>  <!--新增病例数-->
+    <color name="case_update">#50AE7B</color>   <!--更新。。。-->
+    <color name="case_total">#E49553</color>   <!--新增病程数-->
+
+
+    <color name="green_super">#29a061</color>
+
+    // 治疗建议
+    <color name="cure_yellow">#fefe8f</color>
+    <color name="cure_green">#9afa8c</color>
+    <color name="cure_blue">#a9d9fd</color>
+    <color name="cure_purple">#ebcefa</color>
+    <color name="cure_purple_ff">#ffcaee</color>
+    <color name="cure_brick">#ffc583</color>
+
+    <color name="none_relate_p">#6f9d21</color>
+    <color name="none_relate_c">#d4780b</color>
+</resources>

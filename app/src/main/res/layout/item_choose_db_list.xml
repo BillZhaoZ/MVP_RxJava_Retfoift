@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_padding_44dp"
+        android:descendantFocusability="beforeDescendants">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/item_padding_15dp"
+            android:layout_toRightOf="@+id/iv_del"
+            android:background="@null"
+            android:ellipsize="end"
+            android:freezesText="true"
+            android:singleLine="true"
+            android:textColor="@color/color_353535"
+            android:textSize="@dimen/font_size_14sp"/>
+
+        <CheckBox
+            android:id="@+id/cb_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/item_padding_15dp"
+            android:background="@null"
+            android:button="@drawable/btn_check_bg"
+            android:checked="false"
+            android:paddingLeft="1.5dp"
+            android:visibility="visible"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/line_margin_left_15"/>
+
+</LinearLayout>

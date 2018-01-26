@@ -1,0 +1,10 @@
+<resources>
+
+
+    <!-- Translucent theme. -->
+    <style name="TranslucentTheme" parent="android:Theme.Translucent.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

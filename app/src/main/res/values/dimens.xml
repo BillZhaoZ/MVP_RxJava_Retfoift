@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--SP-->
+
+    <!--基本样式  以后按照这个写-->
+    <dimen name="font_size_23sp">23sp</dimen>
+    <dimen name="font_size_18sp">18sp</dimen>
+    <dimen name="font_size_16.5sp">16.5sp</dimen>
+    <dimen name="font_size_16sp">16sp</dimen>
+    <dimen name="font_size_15sp">15sp</dimen>
+    <dimen name="font_size_14sp">14sp</dimen>
+    <dimen name="font_size_13sp">13sp</dimen>
+    <dimen name="font_size_12sp">12sp</dimen>
+    <dimen name="font_size_11sp">11sp</dimen>
+    <dimen name="font_size_10sp">10sp</dimen>
+
+    <!--DP-->
+
+    <!--特殊处理-->
+    <dimen name="line_hight">0.35dp</dimen>
+    <dimen name="item_padding">8dp</dimen>
+
+    <!--基本样式-->
+    <dimen name="item_padding_0.35dp">0.35dp</dimen>
+    <dimen name="item_padding_1dp">1dp</dimen>
+    <dimen name="item_padding_2dp">2dp</dimen>
+    <dimen name="item_padding_3dp">3dp</dimen>
+    <dimen name="item_padding_4dp">4dp</dimen>
+    <dimen name="item_padding_5dp">5dp</dimen>
+    <dimen name="item_padding_6dp">6dp</dimen>
+    <dimen name="item_padding_7dp">7dp</dimen>
+    <dimen name="item_padding_8dp">8dp</dimen>
+    <dimen name="item_padding_9dp">9dp</dimen>
+    <dimen name="item_padding_10dp">10dp</dimen>
+    <dimen name="item_padding_12dp">12dp</dimen>
+    <dimen name="item_padding_14dp">14dp</dimen>
+    <dimen name="item_padding_13dp">13dp</dimen>
+    <dimen name="item_padding_15dp">15dp</dimen>
+    <dimen name="item_padding_16dp">16dp</dimen>
+    <dimen name="item_padding_17dp">17dp</dimen>
+    <dimen name="item_padding_18dp">18dp</dimen>
+    <dimen name="item_padding_20dp">20dp</dimen>
+    <dimen name="item_padding_22dp">22dp</dimen>
+    <dimen name="item_padding_23dp">23dp</dimen>
+    <dimen name="item_padding_25dp">25dp</dimen>
+    <dimen name="item_padding_27dp">27dp</dimen>
+    <dimen name="item_padding_28dp">28dp</dimen>
+    <dimen name="item_padding_30dp">30dp</dimen>
+    <dimen name="item_padding_34dp">34dp</dimen>
+    <dimen name="item_padding_35dp">35dp</dimen>
+    <dimen name="item_padding_38dp">38dp</dimen>
+    <dimen name="item_padding_40dp">40dp</dimen>
+    <dimen name="item_padding_42dp">42dp</dimen>
+    <dimen name="item_padding_43dp">43dp</dimen>
+    <dimen name="item_padding_44dp">44dp</dimen>
+    <dimen name="item_padding_45dp">45dp</dimen>
+    <dimen name="item_padding_46dp">46dp</dimen>
+    <dimen name="item_padding_48dp">48dp</dimen>
+    <dimen name="item_padding_50dp">50dp</dimen>
+    <dimen name="item_padding_55dp">55dp</dimen>
+    <dimen name="item_padding_60dp">60dp</dimen>
+    <dimen name="item_padding_65dp">65dp</dimen>
+    <dimen name="item_padding_68dp">68dp</dimen>
+    <dimen name="item_padding_70dp">70dp</dimen>
+    <dimen name="item_padding_75dp">75dp</dimen>
+    <dimen name="item_padding_80dp">80dp</dimen>
+    <dimen name="item_padding_84dp">84dp</dimen>
+    <dimen name="item_padding_85dp">85dp</dimen>
+    <dimen name="item_padding_86dp">86dp</dimen>
+    <dimen name="item_padding_90dp">90dp</dimen>
+    <dimen name="item_padding_93dp">93dp</dimen>
+    <dimen name="item_padding_95dp">95dp</dimen>
+    <dimen name="item_padding_100dp">100dp</dimen>
+    <dimen name="item_padding_110dp">110dp</dimen>
+    <dimen name="item_padding_115dp">115dp</dimen>
+    <dimen name="item_padding_130dp">130dp</dimen>
+    <dimen name="item_padding_137dp">137dp</dimen>
+    <dimen name="item_padding_140dp">140dp</dimen>
+    <dimen name="item_padding_150dp">150dp</dimen>
+    <dimen name="item_padding_155dp">155dp</dimen>
+    <dimen name="item_padding_160dp">160dp</dimen>
+    <dimen name="item_padding_170dp">170dp</dimen>
+    <dimen name="item_padding_175dp">175dp</dimen>
+    <dimen name="item_padding_180dp">180dp</dimen>
+    <dimen name="item_padding_190dp">190dp</dimen>
+    <dimen name="item_padding_200dp">200dp</dimen>
+    <dimen name="item_padding_205dp">205dp</dimen>
+    <dimen name="item_padding_210dp">210dp</dimen>
+    <dimen name="item_padding_220dp">220dp</dimen>
+    <dimen name="item_padding_250dp">250dp</dimen>
+    <dimen name="item_padding_265dp">265dp</dimen>
+    <dimen name="item_padding_269dp">269dp</dimen>
+    <dimen name="item_padding_275dp">275dp</dimen>
+    <dimen name="item_padding_290dp">290dp</dimen>
+    <dimen name="item_padding_320dp">320dp</dimen>
+    <dimen name="item_padding_330dp">330dp</dimen>
+    <dimen name="item_padding_350dp">350dp</dimen>
+    <dimen name="item_padding_380dp">380dp</dimen>
+    <dimen name="item_height_63dp">63dp</dimen>
+    <dimen name="image_height_39dp">39dp</dimen>
+    <dimen name="height_40">40dp</dimen>
+
+    <dimen name="page_doc_diameter">10dp</dimen>
+
+</resources>
