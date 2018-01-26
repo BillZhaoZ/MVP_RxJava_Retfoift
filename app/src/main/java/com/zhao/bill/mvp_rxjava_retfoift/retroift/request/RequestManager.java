@@ -15,8 +15,8 @@ import io.reactivex.schedulers.Schedulers;
 public class RequestManager {
 
     // 网络环境
-    public static final boolean TEST = BuildConfig.DEBUG;
-    public static final String BASE_URL = TEST ? "http://test.cn" : "https://api.cn";
+    private static final boolean TEST = BuildConfig.DEBUG;
+    private static final String BASE_URL = TEST ? "http://test.cn" : "https://4s.cn";
 
     private static RequestApi requestApi = null;
 
@@ -57,9 +57,10 @@ public class RequestManager {
      */
     public <T> void toSubscribe(Observable<T> observable, Observer<T> subscriber) {
 
-        observable.subscribeOn(Schedulers.io())
+        observable
+                .subscribeOn(Schedulers.io()) // 指定Observable(被观察者)所在的线程，或者叫做事件产生的线程
                 .unsubscribeOn(Schedulers.io()) //在io线程中处理网络请求
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);  //在主线程中处理数据
+                .observeOn(AndroidSchedulers.mainThread()) //在主线程中处理数据   指定 Observer(观察者)所运行在的线程，或者叫做事件消费的线程。
+                .subscribe(subscriber);
     }
 }

@@ -1,20 +1,22 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.client;
 
-import com.zhao.bill.mvp_rxjava_retfoift.BuildConfig;
-import com.zhao.bill.mvp_rxjava_retfoift.MyApplication;
-import com.zhao.bill.mvp_rxjava_retfoift.utils.MD5Utils;
-import com.zhao.bill.mvp_rxjava_retfoift.utils.SHA1Util;
-import com.zhao.bill.mvp_rxjava_retfoift.utils.Tool;
+import com.medbanks.assistant.MedBanksApplication;
+import com.medbanks.assistant.constants.Keys;
+import com.medbanks.assistant.net.BuilderInstall;
+import com.medbanks.assistant.utils.CommonUtils;
+import com.medbanks.assistant.utils.Tool;
+import com.medbanks.assistant.utils.encryption.MD5Utils;
+import com.medbanks.assistant.utils.encryption.SHA1Util;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import cn.medbanks.assistant.BuildConfig;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Headers;
@@ -31,7 +33,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class okHttp {
 
-    private static MyApplication app;
+    private static MedBanksApplication app;
     private static OkHttpClient okHttpClient = null;
 
     private HttpLoggingInterceptor loggingInterceptor;// Log信息拦截器
@@ -51,7 +53,7 @@ public class okHttp {
 
         if (okHttpClient == null) {
             new okHttp();
-            app = MyApplication.getsInstance();
+            app = MedBanksApplication.getsInstance();
 
             return okHttpClient;
         }
@@ -112,14 +114,14 @@ public class okHttp {
             HttpUrl modifiedUrl = originalRequest.url().newBuilder()
                     // Provide your custom parameter here
 
-                   /* .addQueryParameter(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getLogin_Token())
+                    .addQueryParameter(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getLogin_Token())
                     .addQueryParameter(Keys.DB_NAME, app.getCaseDbName())
                     .addQueryParameter(Keys.APP_ID, "android")
                     .addQueryParameter(Keys.APP_VERSION, app.getVersion())
                     .addQueryParameter(Keys.DEVICE_TOKEN, app.getDeviceId())
                     .addQueryParameter(Keys.DEVICE_UUID, app.getDeviceId())
                     .addQueryParameter(Keys.SIGN_TIME, System.currentTimeMillis() + "")
-                    .addQueryParameter(Keys.APP_SIGN, getAppSign(BuilderInstall.getCommonParameters()))*/
+                    .addQueryParameter(Keys.APP_SIGN, getAppSign(BuilderInstall.getCommonParameters()))
 
                     .build();
 
@@ -132,14 +134,14 @@ public class okHttp {
     /**
      * 缓存机制
      */
-    private File cacheFile = new File(MyApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
+    private File cacheFile = new File(MedBanksApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
     private Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
 
     private Interceptor cacheInterceptor = chain -> {
         Request request = chain.request();
 
         // 无网络
-        if (!Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
+        if (!Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
@@ -148,7 +150,7 @@ public class okHttp {
         Response response = chain.proceed(request);
 
         // 有网络
-        if (Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
+        if (Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
             int maxAge = 0;
             // 有网络时 设置缓存超时时间0个小时
             response.newBuilder()
@@ -213,30 +215,5 @@ public class okHttp {
 
         //将每个key拼接后先进行MD5加密在进行sha1加密，得到验证字段
         return SHA1Util.sha1Encode(MD5Utils.getMd5Value(stringKey.toString()) + sha1LinkString);
-    }
-
-    /**
-     * 获取公共参数的方法
-     *
-     * @return
-     */
-    public static Map<String, String> getCommonParameters() {
-        Map<String, String> parameters = new HashMap<>();
-
-       /* if (!TextUtils.isEmpty(CommonUtils.getsInstance().getsInstance().getLogin_Token())) {//如果本地有了token才添加这个字段
-            parameters.put(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getsInstance().getLogin_Token());
-        }
-
-        if (!TextUtils.isEmpty(MyApplication.getsInstance().getCaseDbName())) {//如果本地有了dbname才添加这个字段
-            parameters.put(Keys.DB_NAME, MyApplication.getsInstance().getCaseDbName());
-        }
-
-        parameters.put(Keys.APP_ID, "android");
-        parameters.put(Keys.APP_VERSION, MyApplication.getsInstance().getVersion());
-        parameters.put(Keys.DEVICE_TOKEN, MyApplication.getsInstance().getDeviceId());
-        parameters.put(Keys.DEVICE_UUID, MyApplication.getsInstance().getDeviceId());
-        parameters.put(Keys.SIGN_TIME, System.currentTimeMillis() + "");*/
-
-        return parameters;
     }
 }

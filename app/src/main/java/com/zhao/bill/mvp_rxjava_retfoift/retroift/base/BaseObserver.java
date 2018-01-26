@@ -1,11 +1,11 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.base;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.exception.ResultException;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.AppLog;
 
 import org.json.JSONException;
 
@@ -33,7 +33,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
 
     @Override
     public void onSubscribe(Disposable d) {
-
+        AppLog.e(TAG, "onSubscribe线程: " + Thread.currentThread().getName());
     }
 
     @Override
@@ -41,9 +41,15 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
 
         if (value.getCode() == 0) {
             T t = value.getData();
-            onHandleSuccess(t);
+            int code = value.getCode();
+            String message = value.getMessage();
+
+            onHandleSuccess(t, code, message);
+
         } else {
             onHandleError(value.getMessage());
+
+            AppLog.e(TAG, "onHandleError:" + value.getMessage());
         }
 
         if (value.getResult().equals("success")) {
@@ -55,28 +61,28 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
     public void onError(Throwable e) {
 
         if (e instanceof UnknownHostException) {
-            Log.e(TAG, "onError: 网络连接失败，请检查网络设置");
+            AppLog.e(TAG, "onError: 网络连接失败，请检查网络设置");
 
         } else if (e instanceof SocketTimeoutException) {
-            Log.e(TAG, "onError: 网络连接超时");
+            AppLog.e(TAG, "onError: 网络连接超时");
 
         } else if (e instanceof ConnectException) {
-            Log.e(TAG, "onError: 网络连接超时");
+            AppLog.e(TAG, "onError: 网络连接超时");
 
         } else if (e instanceof HttpException) {
-            Log.e(TAG, "onError: 网络连接超时");
+            AppLog.e(TAG, "onError: 网络连接超时");
 
             HttpException httpException = (HttpException) e;
             int code = httpException.code();
 
             if (code >= 400 && code <= 417) {
-                Log.e(TAG, "onError: 访问地址异常，请稍后再试");
+                AppLog.e(TAG, "onError: 访问地址异常，请稍后再试");
 
             } else if (code >= 500 && code <= 505) {
-                Log.e(TAG, "onError: 服务器繁忙，请稍后再试");
+                AppLog.e(TAG, "onError: 服务器繁忙，请稍后再试");
 
             } else {
-                Log.e(TAG, "onError: 网络连接异常");
+                AppLog.e(TAG, "onError: 网络连接异常");
             }
 
         } else if (e instanceof ResultException) {
@@ -89,7 +95,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             } else if (resultCode <= 0) {
 
             } else {
-                Log.e(TAG, "onError: 数据异常,请稍后重试");
+                AppLog.e(TAG, "onError: 数据异常,请稍后重试");
             }
 
         } else if (e instanceof JsonParseException
@@ -97,22 +103,22 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
                 || e instanceof ParseException
                 || e instanceof NullPointerException) {
 
-            Log.e(TAG, "onError: 数据异常，请稍后再试");
+            AppLog.e(TAG, "onError: 数据或解析异常，请稍后再试");
 
         } else {
-            Log.e(TAG, "onError: 未知错误，请稍后再试");
+            AppLog.e(TAG, "onError: 未知错误，请稍后再试");
         }
 
     }
 
     @Override
     public void onComplete() {
-        Log.d(TAG, "onComplete");
+        AppLog.e(TAG, "onComplete");
     }
 
-    protected abstract void onHandleSuccess(T t);
+    protected abstract void onHandleSuccess(T t, int code, String message);
 
-    protected void onHandleError(String msg) {
-        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-    }
+    protected abstract void onHandleError(String msg);
+
+    protected abstract void onHandleComplete();
 }
