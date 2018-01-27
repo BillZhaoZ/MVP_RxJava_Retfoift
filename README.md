@@ -212,3 +212,5 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
                           
 
 三、RxJava
+        
+       请查看：扔物线大神的文章，给Android开发者的 RxJava 详解。 http://gank.io/post/560e15be2dca930e00da1083
