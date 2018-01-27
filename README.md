@@ -23,7 +23,7 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
                   现在只要在Activity里把Presenter的创建换成PresenterTest，就能进行单元测试了，测试完再换回来即可。
                   万一发现还得进行测试，那就再换成PresenterTest吧。
         
-        避免 Activity 的内存泄露 Android APP 发生OOM的最大原因就是出现内存泄露造成APP的内存不够用，而造成内存泄露的
+        避免Activity的内存泄露 Android APP 发生OOM的最大原因就是出现内存泄露造成APP的内存不够用，而造成内存泄露的
                   两大原因之一就是Activity泄露（Activity Leak）（另一个原因是Bitmap泄露（Bitmap Leak））。
                   Java一个强大的功能就是其虚拟机的内存回收机制，这个功能使得Java用户在设计代码的时候，不用像C++用户那样考虑对象的回收问题。
                   然而，Java用户总是喜欢随便写一大堆对象，然后幻想着虚拟机能帮他们处理好内存的回收工作。可是虚拟机在回收内存的时候，
@@ -37,26 +37,29 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
         采用MVP模式，只要在当前的Activity的onDestroy里，分离异步任务对Activity的引用，就能避免 Activity Leak。
     
     MVP和MVC的区别：
-        作为一种新的模式，MVP与MVC有着一个重大的区别：在MVP中View并不直接使用Model，它们之间的通信是通过Presenter (MVC中的Controller)来进行的，
+            作为一种新的模式，MVP与MVC有着一个重大的区别：在MVP中View并不直接使用Model，它们之间的通信是通过Presenter (MVC中的Controller)来进行的，
         所有的交互都发生在Presenter内部，而在MVC中View会直接从Model中读取数据而不是通过 Controller。
         
-        在MVC里，View是可以直接访问Model的！从而，View里会包含Model信息，不可避免的还要包括一些业务逻辑。 
+            在MVC里，View是可以直接访问Model的！从而，View里会包含Model信息，不可避免的还要包括一些业务逻辑。 
         在MVC模型里，更关注的Model的不变，而同时有多个对Model的不同显示，即View。所以，在MVC模型里，Model不依赖于View，
         但是View是依赖于Model的。不仅如此，因为有一些业务逻辑在View里实现了，导致要更改View也是比较困难的，至少那些业务逻辑是无法重用的。
         虽然 MVC 中的 View 的确“可以”访问 Model，但是我们不建议在 View 中依赖 Model，而是要求尽可能把所有业务逻辑都放在 Controller 中处理，
         而 View 只和 Controller 交互。
 
-    MVP如何解决MVC的问题编辑
+    MVP如何解决MVC的问题
             在MVP里，Presenter完全把Model和View进行了分离，主要的程序逻辑在Presenter里实现。而且，Presenter与具体的View是没有直接关联的，
         而是通过定义好的接口进行交互，从而使得在变更View时候可以保持Presenter的不变，即重用！不仅如此，我们还可以编写测试用的View，模拟用户的各种操作，
         从而实现对Presenter的测试--而不需要使用自动化的测试工具。我们甚至可以在Model和View都没有完成时候，就可以通过编写MockObject
        （即实现了Model和View的接口，但没有具体的内容的）来测试Presenter的逻辑。
+            
             在MVP里，应用程序的逻辑主要在Presenter里实现，其中的View是很薄的一层。因此就有人提出了Presenter First的设计模式，
         就是根据UserStory来首先设计和开发Presenter。在这个过程中，View是很简单的，能够把信息显示清楚就可以了。在后面，根据需要再随便更改View，
         而对Presenter没有任何的影响了。 如果要实现的UI比较复杂，而且相关的显示逻辑还跟Model有关系，就可以在View和Presenter之间放置一个Adapter。
         由这个 Adapter来访问Model和View，避免两者之间的关联。而同时，因为Adapter实现了View的接口，从而可以保证与Presenter之间接口的不变。
         这样就可以保证View和Presenter之间接口的简洁，又不失去UI的灵活性。 
-            在MVP模式里，View只应该有简单的Set/Get的方法，用户输入和设置界面显示的内容，除此就不应该有更多的内容，绝不容许直接访问Model--这就是与MVC很大的不同之处。
+            
+            在MVP模式里，View只应该有简单的Set/Get的方法，用户输入和设置界面显示的内容，除此就不应该有更多的内容，
+            绝不容许直接访问Model--这就是与MVC很大的不同之处。
 
     MVP的优点
         1、模型与视图完全分离，我们可以修改视图而不影响模型
@@ -64,7 +67,7 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
         3、我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。
         4、如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）
 
-    MVP的缺点编辑
+    MVP的缺点
         由于对视图的渲染放在了Presenter中，所以视图和Presenter的交互会过于频繁。
         还有一点需要明白，如果Presenter过多地渲染了视图，往往会使得它与特定的视图的联系过于紧密。
         一旦视图需要变更，那么Presenter也需要变更了。
