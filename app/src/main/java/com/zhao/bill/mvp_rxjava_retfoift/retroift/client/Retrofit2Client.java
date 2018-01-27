@@ -15,6 +15,7 @@ public class Retrofit2Client {
     private static Retrofit.Builder retrofitBuilder = null;
 
     private Retrofit2Client() {
+
         retrofitBuilder = new Retrofit.Builder()
                 //设置OKHttpClient
                 .client(okHttp.getOkHttpClient())

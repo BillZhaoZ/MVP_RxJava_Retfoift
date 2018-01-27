@@ -1,6 +1,7 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.base;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
@@ -95,7 +96,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             } else if (resultCode <= 0) {
 
             } else {
-                AppLog.e(TAG, "onError: 数据异常,请稍后重试");
+                Log.e(TAG, "onError: 数据异常,请稍后重试");
             }
 
         } else if (e instanceof JsonParseException

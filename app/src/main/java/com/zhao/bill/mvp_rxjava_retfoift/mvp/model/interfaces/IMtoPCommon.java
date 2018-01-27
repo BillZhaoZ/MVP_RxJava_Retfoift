@@ -1,17 +1,13 @@
 package com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces;
 
 
-import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
-
-import java.util.List;
-
 /**
  * model层通往presenter的接口回调
  * Created by Bill on 2017/9/7.
  */
-public interface IMtoPForChooseDb {
+public interface IMtoPCommon {
 
-    void onSuccess(List<ChooseDbBean.DataBean> t);
+    void onSuccess(Object o, int code, String message);
 
     void onFailed(String errorMessage);
 }

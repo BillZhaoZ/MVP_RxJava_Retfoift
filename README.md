@@ -22,7 +22,7 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
         MVP中，由于业务逻辑都在Presenter里，我们完全可以写一个PresenterTest的实现类继承Presenter的接口，
                   现在只要在Activity里把Presenter的创建换成PresenterTest，就能进行单元测试了，测试完再换回来即可。
                   万一发现还得进行测试，那就再换成PresenterTest吧。
-    
+        
         避免 Activity 的内存泄露 Android APP 发生OOM的最大原因就是出现内存泄露造成APP的内存不够用，而造成内存泄露的
                   两大原因之一就是Activity泄露（Activity Leak）（另一个原因是Bitmap泄露（Bitmap Leak））。
                   Java一个强大的功能就是其虚拟机的内存回收机制，这个功能使得Java用户在设计代码的时候，不用像C++用户那样考虑对象的回收问题。
@@ -191,7 +191,7 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
         步骤5：创建网络请求接口实例并配置网络请求参数，并对数据进行处理
             
            Map<String, String> map = new HashMap<>();
-            
+           
            RequestManager.getInstance().toSubscribe(RequestManager.createMainApi().getList(map),
                           new BaseObserverList<ChooseDbBean.DataBean>(context) {
                               @Override

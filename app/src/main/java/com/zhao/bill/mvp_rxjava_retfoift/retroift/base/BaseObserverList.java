@@ -5,8 +5,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
-import com.medbanks.assistant.mvp.retroift.exception.ResultException;
-import com.medbanks.assistant.utils.log.AppLog;
+import com.zhao.bill.mvp_rxjava_retfoift.retroift.exception.ResultException;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.AppLog;
 
 import org.json.JSONException;
 

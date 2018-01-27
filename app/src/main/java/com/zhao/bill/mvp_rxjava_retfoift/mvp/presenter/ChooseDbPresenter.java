@@ -5,7 +5,7 @@ import android.content.Context;
 import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.contract.ChooseDbContract;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.impl.ChooseDbModel;
-import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPForChooseDb;
+import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPCommon;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class ChooseDbPresenter implements ChooseDbContract.Presenter {
     public void loadDataFromServer() {
 
         // 请求网络   在model进行  回调返回数据
-        model.loadData(mContext, new IMtoPForChooseDb() {
+        model.loadData(mContext, new IMtoPCommon() {
             @Override
             public void onSuccess(List<ChooseDbBean.DataBean> t) {
                 // 设置数据给view层

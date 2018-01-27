@@ -3,7 +3,7 @@ package com.zhao.bill.mvp_rxjava_retfoift.mvp.model.impl;
 import android.content.Context;
 
 import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
-import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPForChooseDb;
+import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPCommon;
 import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.listner.IChooseDb;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.base.BaseObserverList;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.request.RequestManager;
@@ -25,14 +25,14 @@ public class ChooseDbModel implements IChooseDb {
      * @param iDataToPresenter
      */
     @Override
-    public void loadData(Context context, IMtoPForChooseDb iDataToPresenter) {
+    public void loadData(Context context, IMtoPCommon iDataToPresenter) {
         Map<String, String> map = new HashMap<>();
 
         RequestManager.getInstance().toSubscribe(RequestManager.createMainApi().getList(map),
                 new BaseObserverList<ChooseDbBean.DataBean>(context) {
                     @Override
                     protected void onHandleSuccess(List<ChooseDbBean.DataBean> t, int code, String message) {
-                        iDataToPresenter.onSuccess(t);
+                        iDataToPresenter.onSuccess(t, code, message);
                     }
 
                     @Override
