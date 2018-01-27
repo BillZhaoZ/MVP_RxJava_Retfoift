@@ -73,16 +73,37 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
 
 二、Retrofit请求
     
-    使用 Retrofit 的步骤共有5个：
+    1、Retrofit的优点
+     Q1.什么是网络框架？
+        业务层-->网络调度层-->网络执行层
     
-    步骤1：添加Retrofit库的依赖
+        这里：
+            Retrofit是网络调度层
+            类似volley, retrofit, android-async-http
+            做具体业务请求、线程切换、数据转换
+    
+    OkHttp是网络执行层
+        类似HttpClient, HttpUrlConnection
+        做底层网络请求
+    
+    Q2.为什么用Retrofit?
+        因为Retrofit有：
+        CallAdapter-请求适配器：
+        可以实现多种请求响应形式：同步方式、异步回调方式、RxJava方式
+        Converter-数据转换器：
+        可以自己定义responseBodyConverter和requestBodyConverter,实现加密功能和各种奇葩格式的解析
+    
+    
+    2、使用 Retrofit 的步骤共有5个：
+    
+        步骤1：添加Retrofit库的依赖
             build.gradle:
                     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
                     compile 'com.squareup.retrofit2:retrofit:2.3.0'
                     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
                     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
                     
-    步骤2：创建接收服务器返回数据的类
+        步骤2：创建接收服务器返回数据的类
           /**
            * 服务器通用返回数据格式  返回的data是object
            * Created by Bill on 2016/11/8.
@@ -127,13 +148,13 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
               }
           }
           
-    步骤3：创建用于描述网络请求的接口 
+        步骤3：创建用于描述网络请求的接口 
     
               @FormUrlEncoded
               @POST(URLs.DB_LIST)
               Observable<BaseEntityList<ChooseDbBean.DataBean>> getList(@FieldMap Map<String, String> map);
               
-    步骤4：创建 Retrofit 实例 
+        步骤4：创建 Retrofit 实例 
               /**
                * 获取实例
                */
@@ -167,7 +188,7 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
                               .subscribe(subscriber);
                   }
               
-    步骤5：创建网络请求接口实例并配置网络请求参数，并对数据进行处理
+        步骤5：创建网络请求接口实例并配置网络请求参数，并对数据进行处理
             
            Map<String, String> map = new HashMap<>();
             
