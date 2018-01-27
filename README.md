@@ -58,10 +58,136 @@ Mvp模式 + RxJava调度 + Retrofit网络请求
         这样就可以保证View和Presenter之间接口的简洁，又不失去UI的灵活性。 
             在MVP模式里，View只应该有简单的Set/Get的方法，用户输入和设置界面显示的内容，除此就不应该有更多的内容，绝不容许直接访问Model--这就是与MVC很大的不同之处。
 
+    MVP的优点
+        1、模型与视图完全分离，我们可以修改视图而不影响模型
+        2、可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部
+        3、我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。
+        4、如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）
+
+    MVP的缺点编辑
+        由于对视图的渲染放在了Presenter中，所以视图和Presenter的交互会过于频繁。
+        还有一点需要明白，如果Presenter过多地渲染了视图，往往会使得它与特定的视图的联系过于紧密。
+        一旦视图需要变更，那么Presenter也需要变更了。
+        比如说，原本用来呈现Html的Presenter现在也需要用于呈现Pdf了，那么视图很有可能也需要变更。
+
 
 二、Retrofit请求
-
-
-
+    
+    使用 Retrofit 的步骤共有5个：
+    
+    步骤1：添加Retrofit库的依赖
+            build.gradle:
+                    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+                    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+                    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+                    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+                    
+    步骤2：创建接收服务器返回数据的类
+          /**
+           * 服务器通用返回数据格式  返回的data是object
+           * Created by Bill on 2016/11/8.
+           */
+          public class BaseEntity<E> implements Serializable {
+          
+              private int code;
+              private String message;
+              private String result;
+              private E data;
+          
+              public int getCode() {
+                  return code;
+              }
+          
+              public void setCode(int code) {
+                  this.code = code;
+              }
+          
+              public String getMessage() {
+                  return message;
+              }
+          
+              public void setMessage(String message) {
+                  this.message = message;
+              }
+          
+              public E getData() {
+                  return data;
+              }
+          
+              public void setData(E data) {
+                  this.data = data;
+              }
+          
+              public String getResult() {
+                  return result;
+              }
+          
+              public void setResult(String result) {
+                  this.result = result;
+              }
+          }
+          
+    步骤3：创建用于描述网络请求的接口 
+    
+              @FormUrlEncoded
+              @POST(URLs.DB_LIST)
+              Observable<BaseEntityList<ChooseDbBean.DataBean>> getList(@FieldMap Map<String, String> map);
+              
+    步骤4：创建 Retrofit 实例 
+              /**
+               * 获取实例
+               */
+              private static RequestManager requestManager = null;
+          
+              private RequestManager() {
+          
+              }
+          
+              public static RequestManager getInstance() {
+                  if (requestManager == null) {
+          
+                      return new RequestManager();
+                  }
+                  return requestManager;
+              }
+              
+                  /**
+                   * 设置观察者
+                   *
+                   * @param observable
+                   * @param subscriber
+                   * @param <T>
+                   */
+                  public <T> void toSubscribe(Observable<T> observable, Observer<T> subscriber) {
+              
+                      observable
+                              .subscribeOn(Schedulers.io()) // 指定Observable(被观察者)所在的线程，或者叫做事件产生的线程
+                              .unsubscribeOn(Schedulers.io()) //在io线程中处理网络请求
+                              .observeOn(AndroidSchedulers.mainThread()) //在主线程中处理数据   指定 Observer(观察者)所运行在的线程，或者叫做事件消费的线程。
+                              .subscribe(subscriber);
+                  }
+              
+    步骤5：创建网络请求接口实例并配置网络请求参数，并对数据进行处理
+            
+           Map<String, String> map = new HashMap<>();
+            
+           RequestManager.getInstance().toSubscribe(RequestManager.createMainApi().getList(map),
+                          new BaseObserverList<ChooseDbBean.DataBean>(context) {
+                              @Override
+                              protected void onHandleSuccess(List<ChooseDbBean.DataBean> t) {
+                                  iDataToPresenter.onSuccess(t);
+                              }
+          
+                              @Override
+                              protected void onHandleError(String msg) {
+                                  iDataToPresenter.onFailed(msg);
+                              }
+          
+                              @Override
+                              protected void onHandleComplete() {
+          
+                              }
+                          });
+                          
 
 三、RxJava

@@ -31,7 +31,7 @@ public class ChooseDbModel implements IChooseDb {
         RequestManager.getInstance().toSubscribe(RequestManager.createMainApi().getList(map),
                 new BaseObserverList<ChooseDbBean.DataBean>(context) {
                     @Override
-                    protected void onHandleSuccess(List<ChooseDbBean.DataBean> t) {
+                    protected void onHandleSuccess(List<ChooseDbBean.DataBean> t, int code, String message) {
                         iDataToPresenter.onSuccess(t);
                     }
 
