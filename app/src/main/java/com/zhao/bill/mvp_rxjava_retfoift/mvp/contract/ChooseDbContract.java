@@ -30,7 +30,5 @@ public interface ChooseDbContract {
     interface Presenter extends BasePresenter {
 
         void loadDataFromServer();
-
-        void createCase(String wxId, String database);
     }
 }

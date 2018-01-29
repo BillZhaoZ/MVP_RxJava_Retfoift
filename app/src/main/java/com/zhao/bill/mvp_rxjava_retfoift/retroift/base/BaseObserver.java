@@ -110,6 +110,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntity<T>> {
             AppLog.e(TAG, "onError: 未知错误，请稍后再试");
         }
 
+        onHandleError(e.getMessage());
     }
 
     @Override

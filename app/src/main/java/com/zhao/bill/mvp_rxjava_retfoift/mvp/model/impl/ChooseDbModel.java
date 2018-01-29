@@ -19,11 +19,6 @@ import java.util.Map;
  */
 public class ChooseDbModel implements IChooseDb {
 
-    /**
-     * 获取以上都不是其他数据库
-     *
-     * @param iDataToPresenter
-     */
     @Override
     public void loadData(Context context, IMtoPCommon iDataToPresenter) {
         Map<String, String> map = new HashMap<>();
@@ -46,11 +41,6 @@ public class ChooseDbModel implements IChooseDb {
                     }
                 }, message -> iDataToPresenter.onFailed(message));
 
-    }
-
-    @Override
-    public void createNewCase(String id, String dataBase) {
-        // 请求接口  创建新病例
     }
 
 }

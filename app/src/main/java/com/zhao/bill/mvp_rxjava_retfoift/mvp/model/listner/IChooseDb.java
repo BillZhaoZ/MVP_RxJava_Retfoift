@@ -11,6 +11,4 @@ import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.IMtoPCommon;
 public interface IChooseDb {
 
     void loadData(Context context, IMtoPCommon iDataToPresenter);
-
-    void createNewCase(String id, String dataBase);
 }

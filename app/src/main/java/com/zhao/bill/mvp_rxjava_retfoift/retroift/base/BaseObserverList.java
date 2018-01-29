@@ -112,6 +112,8 @@ public abstract class BaseObserverList<T> implements Observer<BaseEntityList<T>>
         } else {
             AppLog.e(TAG, "onError: 未知错误，请稍后再试");
         }
+
+        onHandleError(e.getMessage());
     }
 
     @Override

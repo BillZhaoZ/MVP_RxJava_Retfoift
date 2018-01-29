@@ -35,10 +35,11 @@ public class ChooseDbPresenter implements ChooseDbContract.Presenter {
 
         // 请求网络   在model进行  回调返回数据
         model.loadData(mContext, new IMtoPCommon() {
+
             @Override
-            public void onSuccess(List<ChooseDbBean.DataBean> t) {
+            public void onSuccess(Object o, int code, String message) {
                 // 设置数据给view层
-                mView.setDataToAdapter(t);
+                mView.setDataToAdapter((List<ChooseDbBean.DataBean>) o);
                 mView.refreshView();
             }
 
@@ -48,16 +49,6 @@ public class ChooseDbPresenter implements ChooseDbContract.Presenter {
             }
 
         });
-    }
-
-    /**
-     * 新建病例
-     *
-     * @param id
-     */
-    @Override
-    public void createCase(String id, String dataBase) {
-        model.createNewCase(id, dataBase);
     }
 
     @Override
