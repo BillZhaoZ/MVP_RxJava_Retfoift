@@ -12,7 +12,7 @@ import com.zhao.bill.mvp_rxjava_retfoift.mvp.model.interfaces.OnItemSelectedList
 import java.util.HashMap;
 
 /**
- * 病例库列表
+ * 列表
  * Created by Bill on 18/1/22.
  */
 public class ChoseDBAdapter extends BaseQuickAdapter<ChooseDbBean.DataBean, BaseViewHolder> {

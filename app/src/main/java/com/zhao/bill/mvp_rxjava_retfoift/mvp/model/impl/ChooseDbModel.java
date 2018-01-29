@@ -44,7 +44,7 @@ public class ChooseDbModel implements IChooseDb {
                     protected void onHandleComplete() {
 
                     }
-                });
+                }, message -> iDataToPresenter.onFailed(message));
 
     }
 

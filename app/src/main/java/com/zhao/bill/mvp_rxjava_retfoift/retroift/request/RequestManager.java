@@ -1,7 +1,13 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.request;
 
+import android.widget.Toast;
+
 import com.zhao.bill.mvp_rxjava_retfoift.BuildConfig;
+import com.zhao.bill.mvp_rxjava_retfoift.MyApplication;
+import com.zhao.bill.mvp_rxjava_retfoift.R;
 import com.zhao.bill.mvp_rxjava_retfoift.retroift.client.Retrofit2Client;
+import com.zhao.bill.mvp_rxjava_retfoift.retroift.exception.NetWorkCon;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.Tool;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -55,12 +61,21 @@ public class RequestManager {
      * @param subscriber
      * @param <T>
      */
-    public <T> void toSubscribe(Observable<T> observable, Observer<T> subscriber) {
+    public <T> void toSubscribe(Observable<T> observable, Observer<T> subscriber, NetWorkCon netWorkCon) {
 
         observable
                 .subscribeOn(Schedulers.io()) // 指定Observable(被观察者)所在的线程，或者叫做事件产生的线程
                 .unsubscribeOn(Schedulers.io()) //在io线程中处理网络请求
                 .observeOn(AndroidSchedulers.mainThread()) //在主线程中处理数据   指定 Observer(观察者)所运行在的线程，或者叫做事件消费的线程。
+                .doOnSubscribe(disposable -> {
+                    // 网络连接判断
+                    if (!Tool.isNetworkAvailable(MyApplication.getsInstance())) {
+                        Toast.makeText(MyApplication.getsInstance(), R.string.toast_network_error, Toast.LENGTH_SHORT).show();
+
+                        netWorkCon.isConnected("网络连接异常，请检查网络");
+                    }
+                })
                 .subscribe(subscriber);
     }
+
 }

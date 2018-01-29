@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.PullToRefreshBase;
 import com.handmark.pulltorefresh.recclerview.PullToRefreshRecyclerView;
 import com.handmark.pulltorefresh.recclerview.WrapRecyclerView;
+import com.zhao.bill.mvp_rxjava_retfoift.base.BasePresenter;
 import com.zhao.bill.mvp_rxjava_retfoift.bean.ChooseDbBean;
 import com.zhao.bill.mvp_rxjava_retfoift.bean.PatientDbData;
 import com.zhao.bill.mvp_rxjava_retfoift.R;
@@ -23,7 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 病历匹配－－以上都不是---库选择界面
+ * 业务界面
  * Created by Bill on 18/1/22.
  */
 public class ChooseDbListActivity extends BaseMvpActivity implements ChooseDbContract.View,
@@ -59,7 +60,6 @@ public class ChooseDbListActivity extends BaseMvpActivity implements ChooseDbCon
         loadTitleBar(true, "关联病历", "");
 
         patientWxID = "100679";
-        //patientDatabase = getIntent().getStringExtra(Keys.PATIENT_DATABASE);
 
         // mRecycleView.addItemDecoration(new RecycleViewDivider(context, LinearLayoutManager.VERTICAL));
         mRecycleView.getRefreshableView().setLayoutManager(new LinearLayoutManager(context));
@@ -74,11 +74,13 @@ public class ChooseDbListActivity extends BaseMvpActivity implements ChooseDbCon
     protected void initData() {
         super.initData();
 
-        // 建立View和presenter的关系
-        presenter = new ChooseDbPresenter(this, context);
-
         // 请求网络数据
         presenter.loadDataFromServer();
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return presenter = new ChooseDbPresenter(this, context);
     }
 
     @Override

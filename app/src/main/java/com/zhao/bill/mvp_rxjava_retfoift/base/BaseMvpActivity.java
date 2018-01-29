@@ -39,7 +39,6 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BaseMvpActivity<P extends BaseContract.BasePresenter<V>,
         V extends BaseContract.BaseView> extends RxAppCompatActivity {
 
-
     /**
      * 判断网络是否可用
      */
@@ -77,6 +76,7 @@ public abstract class BaseMvpActivity<P extends BaseContract.BasePresenter<V>,
     private boolean isFirstStart = true;
     private Unbinder mBind;
     private CustomProgressDialog progressDialog;
+    protected BasePresenter mBasePresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,8 +99,9 @@ public abstract class BaseMvpActivity<P extends BaseContract.BasePresenter<V>,
         }
 
         StatusBarUtil.setColor(this, getResources().getColor(R.color.color_title_bg), 0);
-
         mBind = ButterKnife.bind(this);
+        mBasePresenter = createPresenter();
+
 
         initPresenter();
         initView();
@@ -126,6 +127,8 @@ public abstract class BaseMvpActivity<P extends BaseContract.BasePresenter<V>,
     protected P getPresenter() {
         return null;
     }
+
+    protected abstract BasePresenter createPresenter();
 
     /**
      * bind layout resource file

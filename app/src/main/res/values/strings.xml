@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVP_RxJava_Retfoift</string>
+    <string name="toast_network_error">网络连接异常，请检查网络</string>
+
 </resources>
