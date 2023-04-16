@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="gridview" type="id"/>
-    <item name="webview" type="id"/>
-    <item name="scrollview" type="id"/>
-    <item name="viewpager" type="id"/>
-    <item name="selected_view" type="id"/>
+    <item name="gridview" type="id"></item>
 
-    
-     <item type="id" name="done">false</item>
-    <item type="id" name="date_picker_header">false</item>
-    <item type="id" name="day_picker_selected_date_layout">false</item>
-    <item type="id" name="date_picker_month_and_day">false</item>
-    <item type="id" name="date_picker_month">false</item>
-    <item type="id" name="date_picker_day">false</item>
-    <item type="id" name="date_picker_year">false</item>
-    <item type="id" name="animator">false</item>
-    <item type="id" name="month_text_view">false</item>
+    <item name="webview" type="id"></item>
+    <item name="scrollview" type="id"></item>
+    <item name="viewpager" type="id"></item>
+    <item name="selected_view" type="id"></item>
 
-    <item type="id" name="ultimate_recycler_view" />
+    <item name="done" type="id">false</item>
+    <item name="date_picker_header" type="id">false</item>
+    <item name="day_picker_selected_date_layout" type="id">false</item>
+    <item name="date_picker_month_and_day" type="id">false</item>
+    <item name="date_picker_month" type="id">false</item>
+    <item name="date_picker_day" type="id">false</item>
+    <item name="date_picker_year" type="id">false</item>
+    <item name="animator" type="id">false</item>
+    <item name="month_text_view" type="id">false</item>
+
+    <item name="ultimate_recycler_view" type="id"></item>
 
 </resources>
