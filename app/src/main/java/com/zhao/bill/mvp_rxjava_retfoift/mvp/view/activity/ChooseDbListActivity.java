@@ -119,7 +119,7 @@ public class ChooseDbListActivity extends BaseMvpActivity implements ChooseDbCon
         switch (view.getId()) {
             case R.id.tv_create_case: // 创建新病例
 
-                presenter.createCase(patientWxID, patientDatabase);
+//                presenter.createCase(patientWxID, patientDatabase);
 
                 break;
         }

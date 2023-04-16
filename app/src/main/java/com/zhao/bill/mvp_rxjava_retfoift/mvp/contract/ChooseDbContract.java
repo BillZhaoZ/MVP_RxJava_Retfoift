@@ -28,7 +28,6 @@ public interface ChooseDbContract {
      * 数据和逻辑操作
      */
     interface Presenter extends BasePresenter {
-
         void loadDataFromServer();
     }
 }

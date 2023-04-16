@@ -1,12 +1,14 @@
 package com.zhao.bill.mvp_rxjava_retfoift.retroift.client;
 
-import com.medbanks.assistant.MedBanksApplication;
-import com.medbanks.assistant.constants.Keys;
-import com.medbanks.assistant.net.BuilderInstall;
-import com.medbanks.assistant.utils.CommonUtils;
-import com.medbanks.assistant.utils.Tool;
-import com.medbanks.assistant.utils.encryption.MD5Utils;
-import com.medbanks.assistant.utils.encryption.SHA1Util;
+import android.app.Application;
+
+import com.zhao.bill.mvp_rxjava_retfoift.BuildConfig;
+import com.zhao.bill.mvp_rxjava_retfoift.MyApplication;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.CommonUtils;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.Keys;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.MD5Utils;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.SHA1Util;
+import com.zhao.bill.mvp_rxjava_retfoift.utils.Tool;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import cn.medbanks.assistant.BuildConfig;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Headers;
@@ -33,7 +34,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class okHttp {
 
-    private static MedBanksApplication app;
+    private static Application app;
     private static OkHttpClient okHttpClient = null;
 
     private HttpLoggingInterceptor loggingInterceptor;// Log信息拦截器
@@ -53,7 +54,7 @@ public class okHttp {
 
         if (okHttpClient == null) {
             new okHttp();
-            app = MedBanksApplication.getsInstance();
+            app = MyApplication.getsInstance();
 
             return okHttpClient;
         }
@@ -91,7 +92,6 @@ public class okHttp {
     private HttpLoggingInterceptor getHttpLogInterceptor() {
 
         if (BuildConfig.DEBUG) {
-
             loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         }
@@ -114,14 +114,14 @@ public class okHttp {
             HttpUrl modifiedUrl = originalRequest.url().newBuilder()
                     // Provide your custom parameter here
 
-                    .addQueryParameter(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getLogin_Token())
-                    .addQueryParameter(Keys.DB_NAME, app.getCaseDbName())
-                    .addQueryParameter(Keys.APP_ID, "android")
-                    .addQueryParameter(Keys.APP_VERSION, app.getVersion())
-                    .addQueryParameter(Keys.DEVICE_TOKEN, app.getDeviceId())
-                    .addQueryParameter(Keys.DEVICE_UUID, app.getDeviceId())
-                    .addQueryParameter(Keys.SIGN_TIME, System.currentTimeMillis() + "")
-                    .addQueryParameter(Keys.APP_SIGN, getAppSign(BuilderInstall.getCommonParameters()))
+//                    .addQueryParameter(Keys.LOGIN_TOKEN, CommonUtils.getsInstance().getLogin_Token())
+//                    .addQueryParameter(Keys.DB_NAME, app.getCaseDbName())
+//                    .addQueryParameter(Keys.APP_ID, "android")
+//                    .addQueryParameter(Keys.APP_VERSION, app.getVersion())
+//                    .addQueryParameter(Keys.DEVICE_TOKEN, app.getDeviceId())
+//                    .addQueryParameter(Keys.DEVICE_UUID, app.getDeviceId())
+//                    .addQueryParameter(Keys.SIGN_TIME, System.currentTimeMillis() + "")
+//                    .addQueryParameter(Keys.APP_SIGN, getAppSign(BuilderInstall.getCommonParameters()))
 
                     .build();
 
@@ -134,14 +134,14 @@ public class okHttp {
     /**
      * 缓存机制
      */
-    private File cacheFile = new File(MedBanksApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
+    private File cacheFile = new File(MyApplication.getsInstance().getExternalCacheDir(), "MedbanksCache");
     private Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
 
     private Interceptor cacheInterceptor = chain -> {
         Request request = chain.request();
 
         // 无网络
-        if (!Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
+        if (!Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
@@ -150,7 +150,7 @@ public class okHttp {
         Response response = chain.proceed(request);
 
         // 有网络
-        if (Tool.isNetworkAvailable(MedBanksApplication.getsInstance().getApplicationContext())) {
+        if (Tool.isNetworkAvailable(MyApplication.getsInstance().getApplicationContext())) {
             int maxAge = 0;
             // 有网络时 设置缓存超时时间0个小时
             response.newBuilder()
